@@ -1,0 +1,7 @@
+  public String getidprojet() {
+    return idprojet;
+  }
+
+  public void setidprojet(String idprojet) {
+    this.idprojet = idprojet;
+  }
