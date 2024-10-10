@@ -15,6 +15,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -23,24 +24,24 @@ import static org.mockito.Mockito.when;
 class DemoApplicationTests {
 
     @Mock
-    private AbsenceRepository absenceRepository; // Mock pour AbsenceRepository
+    private AbsenceRepository absenceRepository;
     @Mock
-    private AdminRepository adminRepository; // Mock pour AdminRepository
+    private AdminRepository adminRepository;
 
     @InjectMocks
-    private AbsenceController absenceController; // Injection du mock dans AbsenceController
+    private AbsenceController absenceController;
     @InjectMocks
-    private AdminController adminController; // Injection du mock dans AdminController
+    private AdminController adminController;
 
     @BeforeEach
     void setUp() {
-        MockitoAnnotations.openMocks(this); // Initialiser les mocks
+        MockitoAnnotations.openMocks(this);
     }
 
     @Test
     void contextLoads() {
-        assertThat(absenceController).isNotNull(); // Vérifie que le contrôleur est bien instancié
-        assertThat(adminController).isNotNull(); // Vérifie que le contrôleur est bien instancié
+        assertThat(absenceController).isNotNull();
+        assertThat(adminController).isNotNull();
     }
 
     // Tests pour AbsenceController
@@ -61,7 +62,7 @@ class DemoApplicationTests {
     @Test
     void testGetAbsenceById() {
         Absence absence = new Absence("Titre 1", "Description 1", "En attente");
-        absence.setId("1"); // Définir un ID pour l'absence
+        absence.setId("1");
 
         when(absenceRepository.findById("1")).thenReturn(Optional.of(absence));
 
@@ -99,7 +100,7 @@ class DemoApplicationTests {
     @Test
     void testGetAdminById() {
         Admin admin = new Admin("admin", "password", "admin@example.com");
-        admin.setId("1"); // Définir un ID pour l'admin
+        admin.setId("1");
 
         when(adminRepository.findById("1")).thenReturn(Optional.of(admin));
 
