@@ -53,7 +53,9 @@ public class Admin {
   public String getmotdepasse() {
     return motdepasse;
   }
-
+public void setId(String id) {
+        this.id = id;
+    }
   public void setmotdepasse(String motdepasse) {
     this.motdepasse = motdepasse;
   }
