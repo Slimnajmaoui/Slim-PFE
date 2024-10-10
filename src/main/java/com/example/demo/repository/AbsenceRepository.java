@@ -7,5 +7,5 @@ import java.util.List;
 
 @Repository
 public interface AbsenceRepository extends MongoRepository<Absence, String> {
-    List<Absence> findByTitreContaining(String titre);
+    List<Absence> findByTitreContaining(String titre);  // Assurez-vous que cela est correct
 }
