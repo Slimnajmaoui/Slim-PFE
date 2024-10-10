@@ -70,7 +70,7 @@ class DemoApplicationTests {
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(response.getBody()).isNotNull();
-        assertThat(response.getBody().getTitre()).isEqualTo("Titre 1");
+        assertThat(response.getBody().gettitre()).isEqualTo("Titre 1");
     }
 
     @Test
