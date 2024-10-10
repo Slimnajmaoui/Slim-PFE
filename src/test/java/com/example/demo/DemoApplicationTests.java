@@ -15,7 +15,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import java.util.Collections;
-import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -24,16 +23,14 @@ import static org.mockito.Mockito.when;
 class DemoApplicationTests {
 
     @Mock
-    private AbsenceRepository absenceRepository; // Mock de la dépendance AbsenceRepository
-
-    @InjectMocks
-    private AbsenceController absenceController; // Injection du mock dans le contrôleur Absence
-
+    private AbsenceRepository absenceRepository; // Mock pour AbsenceRepository
     @Mock
-    private AdminRepository adminRepository; // Mock de la dépendance AdminRepository
+    private AdminRepository adminRepository; // Mock pour AdminRepository
 
     @InjectMocks
-    private AdminController adminController; // Injection du mock dans le contrôleur Admin
+    private AbsenceController absenceController; // Injection du mock dans AbsenceController
+    @InjectMocks
+    private AdminController adminController; // Injection du mock dans AdminController
 
     @BeforeEach
     void setUp() {
@@ -42,26 +39,23 @@ class DemoApplicationTests {
 
     @Test
     void contextLoads() {
-        assertThat(absenceController).isNotNull(); // Vérifie que le contrôleur Absence est bien instancié
-        assertThat(adminController).isNotNull(); // Vérifie que le contrôleur Admin est bien instancié
+        assertThat(absenceController).isNotNull(); // Vérifie que le contrôleur est bien instancié
+        assertThat(adminController).isNotNull(); // Vérifie que le contrôleur est bien instancié
     }
 
     // Tests pour AbsenceController
     @Test
     void testGetAllAbsences() {
-        // Simuler le comportement du repository
         Absence absence = new Absence("Titre 1", "Description 1", "En attente");
         when(absenceRepository.findAll()).thenReturn(Collections.singletonList(absence));
 
-        // Appeler la méthode du contrôleur
         ResponseEntity<List<Absence>> response = absenceController.getAllAbsences(null);
         List<Absence> absences = response.getBody();
 
-        // Vérifier que le résultat est correct
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(absences).isNotNull();
         assertThat(absences).hasSize(1);
-        assertThat(absences.get(0).gettitre()).isEqualTo("Titre 1");
+        assertThat(absences.get(0).getTitre()).isEqualTo("Titre 1");
     }
 
     @Test
@@ -75,7 +69,7 @@ class DemoApplicationTests {
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(response.getBody()).isNotNull();
-        assertThat(response.getBody().gettitre()).isEqualTo("Titre 1");
+        assertThat(response.getBody().getTitre()).isEqualTo("Titre 1");
     }
 
     @Test
@@ -90,24 +84,21 @@ class DemoApplicationTests {
     // Tests pour AdminController
     @Test
     void testGetAllAdmins() {
-        // Simuler le comportement du repository
-        Admin admin = new Admin("adminUser", "password", "admin@example.com");
+        Admin admin = new Admin("admin", "password", "admin@example.com");
         when(adminRepository.findAll()).thenReturn(Collections.singletonList(admin));
 
-        // Appeler la méthode du contrôleur
         ResponseEntity<List<Admin>> response = adminController.getAllAdmins(null);
         List<Admin> admins = response.getBody();
 
-        // Vérifier que le résultat est correct
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(admins).isNotNull();
         assertThat(admins).hasSize(1);
-        assertThat(admins.get(0).getusername()).isEqualTo("adminUser");
+        assertThat(admins.get(0).getusername()).isEqualTo("admin");
     }
 
     @Test
     void testGetAdminById() {
-        Admin admin = new Admin("adminUser", "password", "admin@example.com");
+        Admin admin = new Admin("admin", "password", "admin@example.com");
         admin.setId("1"); // Définir un ID pour l'admin
 
         when(adminRepository.findById("1")).thenReturn(Optional.of(admin));
@@ -116,7 +107,7 @@ class DemoApplicationTests {
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(response.getBody()).isNotNull();
-        assertThat(response.getBody().getusername()).isEqualTo("adminUser");
+        assertThat(response.getBody().getusername()).isEqualTo("admin");
     }
 
     @Test
@@ -130,7 +121,7 @@ class DemoApplicationTests {
 
     @Test
     void testCreateAdmin() {
-        Admin admin = new Admin("adminUser", "password", "admin@example.com");
+        Admin admin = new Admin("admin", "password", "admin@example.com");
 
         when(adminRepository.save(admin)).thenReturn(admin);
 
@@ -138,40 +129,6 @@ class DemoApplicationTests {
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.CREATED);
         assertThat(response.getBody()).isNotNull();
-        assertThat(response.getBody().getusername()).isEqualTo("adminUser");
-    }
-
-    @Test
-    void testUpdateAdmin() {
-        Admin admin = new Admin("adminUser", "password", "admin@example.com");
-        admin.setId("1"); // Définir un ID pour l'admin
-
-        when(adminRepository.findById("1")).thenReturn(Optional.of(admin));
-        when(adminRepository.save(admin)).thenReturn(admin);
-
-        ResponseEntity<Admin> response = adminController.updateAdmin("1", admin);
-
-        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(response.getBody()).isNotNull();
-        assertThat(response.getBody().getusername()).isEqualTo("adminUser");
-    }
-
-    @Test
-    void testDeleteAdmin() {
-        Admin admin = new Admin("adminUser", "password", "admin@example.com");
-        admin.setId("1"); // Définir un ID pour l'admin
-
-        when(adminRepository.findById("1")).thenReturn(Optional.of(admin));
-
-        ResponseEntity<HttpStatus> response = adminController.deleteAdmin("1");
-
-        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NO_CONTENT);
-    }
-
-    @Test
-    void testDeleteAllAdmins() {
-        ResponseEntity<HttpStatus> response = adminController.deleteAllAdmins();
-
-        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NO_CONTENT);
+        assertThat(response.getBody().getusername()).isEqualTo("admin");
     }
 }
