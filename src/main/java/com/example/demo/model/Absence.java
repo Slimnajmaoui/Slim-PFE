@@ -45,6 +45,9 @@ public class Absence {
   public String getdatecreation() {
     return datecreation;
   }
+public void setId(String id) { // Ajoutez cette méthode
+        this.id = id;
+    }
 
   public void setdatecreation(String datecreation) {
     this.datecreation = datecreation;
