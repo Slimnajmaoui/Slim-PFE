@@ -56,7 +56,7 @@ class DemoApplicationTests {
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(absences).isNotNull();
         assertThat(absences).hasSize(1);
-        assertThat(absences.get(0).getTitre()).isEqualTo("Titre 1");
+        assertThat(absences.get(0).gettitre()).isEqualTo("Titre 1");
     }
 
     @Test
