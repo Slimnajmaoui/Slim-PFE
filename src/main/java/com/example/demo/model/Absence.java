@@ -1,5 +1,7 @@
 package com.example.demo.model;
 
+
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -16,8 +18,11 @@ public class Absence {
   private String datecreation;
 
   public Absence() {
-  }
 
+  }
+  public String getetat() {
+    return etat;
+  }
   public Absence(String titre, String description, String etat) {
     this.titre = titre;
     this.description = description;
@@ -28,55 +33,47 @@ public class Absence {
     return id;
   }
 
-  public String getTitre() {
-    return titre; // Changer gettitre() en getTitre()
+  public String gettitre() {
+    return titre;
+  }
+  public String getdatedebut() {
+    return datedebut;
+  }
+  public String getdatefin() {
+    return datefin;
+  }
+  public String getdatecreation() {
+    return datecreation;
   }
 
-  public String getDatedebut() {
-    return datedebut; // Changer getdatedebut() en getDatedebut()
+  public void setdatecreation(String datecreation) {
+    this.datecreation = datecreation;
+  }
+  public void setdatefin(String datefin) {
+    this.datefin = datefin;
+  }
+  public void setdatedebut(String datedebut) {
+    this.datedebut = datedebut;
+  }
+  public void settitre(String titre) {
+    this.titre = titre;
   }
 
-  public String getDatefin() {
-    return datefin; // Changer getdatefin() en getDatefin()
-  }
-
-  public String getDatecreation() {
-    return datecreation; // Changer getdatecreation() en getDatecreation()
-  }
-
-  public void setId(String id) {
-    this.id = id;
-  }
-
-  public void setDatecreation(String datecreation) {
-    this.datecreation = datecreation; // Changer setdatecreation() en setDatecreation()
-  }
-
-  public void setDatefin(String datefin) {
-    this.datefin = datefin; // Changer setdatefin() en setDatefin()
-  }
-
-  public void setDatedebut(String datedebut) {
-    this.datedebut = datedebut; // Changer setdatedebut() en setDatedebut()
-  }
-
-  public void setTitre(String titre) {
-    this.titre = titre; // Changer settitre() en setTitre()
-  }
-
-  public String getDescription() {
+  public String getdescription() {
     return description;
   }
 
-  public void setDescription(String description) {
+  public void setdescription(String description) {
     this.description = description;
   }
 
-  public String getEtat() {
-    return etat; // Changer isetat() en getEtat()
+  public String isetat() {
+    return etat;
   }
 
-  public void setEtat(String etat) {
-    this.etat = etat;
+  public void setetat(String isetat) {
+    this.etat = isetat;
   }
+
+
 }
