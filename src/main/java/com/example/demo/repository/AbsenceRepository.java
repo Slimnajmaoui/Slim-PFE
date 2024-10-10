@@ -1,14 +1,11 @@
 package com.example.demo.repository;
 
-
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.stereotype.Repository;
+import com.example.demo.model.Absence;
 import java.util.List;
 
-import org.springframework.data.mongodb.repository.MongoRepository;
-
-import com.example.demo.model.Absence;
-
-
+@Repository
 public interface AbsenceRepository extends MongoRepository<Absence, String> {
-  List<Absence> findBytitreContaining(String title);
-  List<Absence> findBytitre(String titre);
+    List<Absence> findByTitreContaining(String titre);
 }
