@@ -79,12 +79,12 @@ public class AbsenceController {
 
 	  if (AbsenceData.isPresent()) {
 	    Absence _Absence = AbsenceData.get();
-	    _Absence.settitre(Absence.gettitre());
+	    _Absence.settitre(Absence.getTitre());
 	    _Absence.setdescription(Absence.getdescription());
-	    _Absence.setetat(Absence.getetat());
-	    _Absence.setdatedebut(Absence.getdatedebut());
-	    _Absence.setdatefin(Absence.getdatefin());
-	    _Absence.setdatecreation(Absence.getdatecreation());
+	    _Absence.setetat(Absence.getEtat());
+	    _Absence.setdatedebut(Absence.getDatedebut());
+	    _Absence.setdatefin(Absence.getDatefin());
+	    _Absence.setdatecreation(Absence.getDatecreation());
 	    return new ResponseEntity<>(AbsenceRepository.save(_Absence), HttpStatus.OK);
 	  } else {
 	    return new ResponseEntity<>(HttpStatus.NOT_FOUND);
