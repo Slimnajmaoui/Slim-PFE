@@ -136,7 +136,7 @@ void testCreateAdmin() {
     assertThat(response).isNotNull(); // Vérifier que la réponse elle-même n'est pas nulle
     assertThat(response.getStatusCode()).isEqualTo(HttpStatus.CREATED); // Vérifier le statut de la réponse
     assertThat(response.getBody()).isNotNull(); // Vérifier que le corps de la réponse n'est pas nul
-    assertThat(response.getBody().getUsername()).isEqualTo("admin"); // Vérifier que le nom d'utilisateur est correct
+    assertThat(response.getBody().getusername()).isEqualTo("admin"); // Vérifier que le nom d'utilisateur est correct
 }
 
 }
