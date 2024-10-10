@@ -35,7 +35,7 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-             <dependencies>
+          
     <!-- Dépendance pour les tests avec Spring Boot -->
     <dependency>
         <groupId>org.springframework.boot</groupId>
@@ -63,7 +63,7 @@
         <artifactId>assertj-core</artifactId>
         <scope>test</scope>
     </dependency>
-</dependencies>
+
 
 
 
