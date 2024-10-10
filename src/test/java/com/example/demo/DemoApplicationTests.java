@@ -103,7 +103,7 @@ class DemoApplicationTests {
 
     @Test
     void testGetAdminById() {
-        Admin admin = new Admin("admin", "password", "admin@example.com");
+        Admin admin = new Admin("admin", "motdepasse", "admin@example.com");
         admin.setId("1");
 
         when(adminRepository.findById("1")).thenReturn(Optional.of(admin));
@@ -128,9 +128,9 @@ class DemoApplicationTests {
     void testCreateAdmin() {
         // Assurez-vous que l'objet Admin est correctement construit
         Admin admin = new Admin();
-        admin.setUsername("testUser");
-        admin.setEmail("test@example.com");
-        admin.setPassword("password");
+        admin.setusername("testUser");
+        admin.setemail("test@example.com");
+        admin.setmotdepasse("motdepasse");
 
         // Simulez le comportement du repository
         when(adminRepository.save(any(Admin.class))).thenReturn(admin);
