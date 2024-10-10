@@ -25,11 +25,13 @@ class DemoApplicationTests {
 
     @Mock
     private AbsenceRepository absenceRepository;
+
     @Mock
     private AdminRepository adminRepository;
 
     @InjectMocks
     private AbsenceController absenceController;
+
     @InjectMocks
     private AdminController adminController;
 
@@ -47,7 +49,7 @@ class DemoApplicationTests {
     // Tests pour AbsenceController
     @Test
     void testGetAllAbsences() {
-        Absence absence = new Absence("titre 1", "description 1", "En attente");
+        Absence absence = new Absence("Titre 1", "description 1", "En attente");
         when(absenceRepository.findAll()).thenReturn(Collections.singletonList(absence));
 
         ResponseEntity<List<Absence>> response = absenceController.getAllAbsences(null);
@@ -56,12 +58,12 @@ class DemoApplicationTests {
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(absences).isNotNull();
         assertThat(absences).hasSize(1);
-        assertThat(absences.get(0).gettitre()).isEqualTo("Titre 1");
+        assertThat(absences.get(0).getTitre()).isEqualTo("Titre 1"); // Correction de la méthode ici
     }
 
     @Test
     void testGetAbsenceById() {
-        Absence absence = new Absence("titre 1", "description 1", "En attente");
+        Absence absence = new Absence("Titre 1", "description 1", "En attente");
         absence.setId("1");
 
         when(absenceRepository.findById("1")).thenReturn(Optional.of(absence));
@@ -70,7 +72,7 @@ class DemoApplicationTests {
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(response.getBody()).isNotNull();
-        assertThat(response.getBody().gettitre()).isEqualTo("Titre 1");
+        assertThat(response.getBody().getTitre()).isEqualTo("Titre 1"); // Correction de la méthode ici
     }
 
     @Test
@@ -94,7 +96,7 @@ class DemoApplicationTests {
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(admins).isNotNull();
         assertThat(admins).hasSize(1);
-        assertThat(admins.get(0).getusername()).isEqualTo("admin");
+        assertThat(admins.get(0).getUsername()).isEqualTo("admin"); // Correction de la méthode ici
     }
 
     @Test
@@ -108,7 +110,7 @@ class DemoApplicationTests {
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(response.getBody()).isNotNull();
-        assertThat(response.getBody().getusername()).isEqualTo("admin");
+        assertThat(response.getBody().getUsername()).isEqualTo("admin"); // Correction de la méthode ici
     }
 
     @Test
@@ -130,6 +132,6 @@ class DemoApplicationTests {
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.CREATED);
         assertThat(response.getBody()).isNotNull();
-        assertThat(response.getBody().getusername()).isEqualTo("admin");
+        assertThat(response.getBody().getUsername()).isEqualTo("admin"); // Correction de la méthode ici
     }
 }
