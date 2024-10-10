@@ -66,7 +66,9 @@ public class Absence {
   public void setdescription(String description) {
     this.description = description;
   }
-
+public void setId(String id) { // Ajoutez cette méthode
+        this.id = id;
+    }
   public String isetat() {
     return etat;
   }
