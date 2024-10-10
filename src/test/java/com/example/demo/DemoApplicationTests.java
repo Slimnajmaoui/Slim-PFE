@@ -19,7 +19,9 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 class DemoApplicationTests {
 
@@ -96,7 +98,7 @@ class DemoApplicationTests {
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(admins).isNotNull();
         assertThat(admins).hasSize(1);
-        assertThat(admins.get(0).getusername()).isEqualTo("admin");
+        assertThat(admins.get(0).getUsername()).isEqualTo("admin");
     }
 
     @Test
@@ -110,7 +112,7 @@ class DemoApplicationTests {
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(response.getBody()).isNotNull();
-        assertThat(response.getBody().getusername()).isEqualTo("admin");
+        assertThat(response.getBody().getUsername()).isEqualTo("admin");
     }
 
     @Test
@@ -122,30 +124,23 @@ class DemoApplicationTests {
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
     }
 
-   @Test
-void testCreateAdmin() {
-    // Assurez-vous que l'objet Admin est correctement construit
-    Admin admin = new Admin();
-    admin.setUsername("testUser");
-    admin.setEmail("test@example.com");
-    admin.setPassword("password");
+    @Test
+    void testCreateAdmin() {
+        // Assurez-vous que l'objet Admin est correctement construit
+        Admin admin = new Admin();
+        admin.setUsername("testUser");
+        admin.setEmail("test@example.com");
+        admin.setPassword("password");
 
-    // Simulez le comportement du repository
-    when(adminRepository.save(any(Admin.class))).thenReturn(admin);
+        // Simulez le comportement du repository
+        when(adminRepository.save(any(Admin.class))).thenReturn(admin);
 
-    // Appelez la méthode à tester
-    Admin createdAdmin = adminController.createAdmin(admin);
+        // Appelez la méthode à tester
+        Admin createdAdmin = adminController.createAdmin(admin);
 
-    // Vérifiez que l'objet retourné n'est pas nul
-    assertNotNull(createdAdmin);
-}
-
- 
-    // Vérifiez que la réponse n'est pas null
-    assertThat(response).isNotNull(); // Vérifier que la réponse elle-même n'est pas nulle
-    assertThat(response.getStatusCode()).isEqualTo(HttpStatus.CREATED); // Vérifier le statut de la réponse
-    assertThat(response.getBody()).isNotNull(); // Vérifier que le corps de la réponse n'est pas nul
-    assertThat(response.getBody().getusername()).isEqualTo("admin"); // Vérifier que le nom d'utilisateur est correct
-}
-
+        // Vérifiez que l'objet retourné n'est pas nul
+        assertNotNull(createdAdmin);
+        assertThat(createdAdmin.getUsername()).isEqualTo("testUser");
+        assertThat(createdAdmin.getEmail()).isEqualTo("test@example.com");
+    }
 }
