@@ -98,7 +98,7 @@ class DemoApplicationTests {
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(admins).isNotNull();
         assertThat(admins).hasSize(1);
-        assertThat(admins.get(0).getUsername()).isEqualTo("admin");
+        assertThat(admins.get(0).getusername()).isEqualTo("admin");
     }
 
     @Test
@@ -112,7 +112,7 @@ class DemoApplicationTests {
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(response.getBody()).isNotNull();
-        assertThat(response.getBody().getUsername()).isEqualTo("admin");
+        assertThat(response.getBody().getusername()).isEqualTo("admin");
     }
 
     @Test
@@ -140,7 +140,7 @@ class DemoApplicationTests {
 
         // Vérifiez que l'objet retourné n'est pas nul
         assertNotNull(createdAdmin);
-        assertThat(createdAdmin.getUsername()).isEqualTo("testUser");
-        assertThat(createdAdmin.getEmail()).isEqualTo("test@example.com");
+        assertThat(createdAdmin.getusername()).isEqualTo("testUser");
+        assertThat(createdAdmin.getemail()).isEqualTo("test@example.com");
     }
 }
