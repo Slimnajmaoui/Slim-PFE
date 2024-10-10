@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -49,7 +50,7 @@ class AbsenceControllerTests {
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(absences).isNotNull();
         assertThat(absences).hasSize(1);
-        assertThat(absences.get(0).getTitre()).isEqualTo("Titre 1");
+        assertThat(absences.get(0).gettitre()).isEqualTo("Titre 1");
     }
 
     @Test
@@ -63,7 +64,7 @@ class AbsenceControllerTests {
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(response.getBody()).isNotNull();
-        assertThat(response.getBody().getTitre()).isEqualTo("Titre 1");
+        assertThat(response.getBody().gettitre()).isEqualTo("Titre 1");
     }
 
     @Test
@@ -77,4 +78,17 @@ class AbsenceControllerTests {
 
     @Test
     void testCreateAbsence() {
-        Absence absence = new Absence("Titre 1", "Description 1", "En
+        Absence absence = new Absence("Titre 1", "Description 1", "En attente");
+        
+        // Simuler le comportement du repository lors de la sauvegarde
+        when(absenceRepository.save(absence)).thenReturn(absence);
+
+        // Appeler la méthode du contrôleur pour créer une absence
+        ResponseEntity<Absence> response = absenceController.createAbsence(absence);
+
+        // Vérifier que le résultat est correct
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.CREATED);
+        assertThat(response.getBody()).isNotNull();
+        assertThat(response.getBody().gettitre()).isEqualTo("Titre 1");
+    }
+}
