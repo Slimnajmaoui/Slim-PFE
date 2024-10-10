@@ -107,11 +107,6 @@ public class AdminController {
         return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
       }
   }
-@PostMapping("/Admins")
-public ResponseEntity<Admin> createAdmin(@RequestBody Admin admin) {
-    Admin savedAdmin = adminRepository.save(admin); // Sauvegarder l'admin dans la base de données
-    return new ResponseEntity<>(savedAdmin, HttpStatus.CREATED); // Retourner la réponse avec le statut CREATED
-}
 
 
 
