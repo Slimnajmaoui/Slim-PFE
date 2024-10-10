@@ -20,9 +20,10 @@ public class Absence {
   public Absence() {
 
   }
-  public String getetat() {
+ public String getEtat() {
     return etat;
-  }
+}
+
   public Absence(String titre, String description, String etat) {
     this.titre = titre;
     this.description = description;
@@ -33,16 +34,18 @@ public class Absence {
     return id;
   }
 
-  public String gettitre() {
+  public String getTitre() {
     return titre;
   }
-  public String getdatedebut() {
+  
+  public String getDatedebut() {
     return datedebut;
   }
-  public String getdatefin() {
+  
+  public String getDatefin() {
     return datefin;
   }
-  public String getdatecreation() {
+  public String getDatecreation() {
     return datecreation;
   }
 public void setId(String id) { // Ajoutez cette méthode
