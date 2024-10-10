@@ -58,7 +58,7 @@ class DemoApplicationTests {
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(absences).isNotNull();
         assertThat(absences).hasSize(1);
-        assertThat(absences.get(0).getTitre()).isEqualTo("Titre 1"); // Correction de la méthode ici
+        assertThat(absences.get(0).gettitre()).isEqualTo("Titre 1");
     }
 
     @Test
@@ -72,7 +72,7 @@ class DemoApplicationTests {
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(response.getBody()).isNotNull();
-        assertThat(response.getBody().getTitre()).isEqualTo("Titre 1"); // Correction de la méthode ici
+        assertThat(response.getBody().gettitre()).isEqualTo("Titre 1");
     }
 
     @Test
@@ -96,7 +96,7 @@ class DemoApplicationTests {
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(admins).isNotNull();
         assertThat(admins).hasSize(1);
-        assertThat(admins.get(0).getUsername()).isEqualTo("admin"); // Correction de la méthode ici
+        assertThat(admins.get(0).getusername()).isEqualTo("admin");
     }
 
     @Test
@@ -110,7 +110,7 @@ class DemoApplicationTests {
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(response.getBody()).isNotNull();
-        assertThat(response.getBody().getUsername()).isEqualTo("admin"); // Correction de la méthode ici
+        assertThat(response.getBody().getusername()).isEqualTo("admin");
     }
 
     @Test
@@ -132,6 +132,6 @@ class DemoApplicationTests {
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.CREATED);
         assertThat(response.getBody()).isNotNull();
-        assertThat(response.getBody().getUsername()).isEqualTo("admin"); // Correction de la méthode ici
+        assertThat(response.getBody().getusername()).isEqualTo("admin");
     }
 }
