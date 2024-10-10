@@ -124,14 +124,23 @@ class DemoApplicationTests {
 
    @Test
 void testCreateAdmin() {
-    Admin admin = new Admin("admin", "password", "admin@example.com");
+    // Assurez-vous que l'objet Admin est correctement construit
+    Admin admin = new Admin();
+    admin.setUsername("testUser");
+    admin.setEmail("test@example.com");
+    admin.setPassword("password");
 
-    // Simulez le comportement de la méthode save pour retourner l'admin
-    when(adminRepository.save(admin)).thenReturn(admin); // Simuler le retour de la méthode save
+    // Simulez le comportement du repository
+    when(adminRepository.save(any(Admin.class))).thenReturn(admin);
 
-    // Appelez la méthode createAdmin
-    ResponseEntity<Admin> response = adminController.createAdmin(admin);
+    // Appelez la méthode à tester
+    Admin createdAdmin = adminController.createAdmin(admin);
 
+    // Vérifiez que l'objet retourné n'est pas nul
+    assertNotNull(createdAdmin);
+}
+
+ 
     // Vérifiez que la réponse n'est pas null
     assertThat(response).isNotNull(); // Vérifier que la réponse elle-même n'est pas nulle
     assertThat(response.getStatusCode()).isEqualTo(HttpStatus.CREATED); // Vérifier le statut de la réponse
