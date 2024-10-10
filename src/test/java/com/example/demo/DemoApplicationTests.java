@@ -122,16 +122,21 @@ class DemoApplicationTests {
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
     }
 
-    @Test
-    void testCreateAdmin() {
-        Admin admin = new Admin("admin", "password", "admin@example.com");
+   @Test
+void testCreateAdmin() {
+    Admin admin = new Admin("admin", "password", "admin@example.com");
 
-        when(adminRepository.save(admin)).thenReturn(admin);
+    // Simulez le comportement de la méthode save pour retourner l'admin
+    when(adminRepository.save(admin)).thenReturn(admin); // Simuler le retour de la méthode save
 
-        ResponseEntity<Admin> response = adminController.createAdmin(admin);
+    // Appelez la méthode createAdmin
+    ResponseEntity<Admin> response = adminController.createAdmin(admin);
 
-        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.CREATED);
-        assertThat(response.getBody()).isNotNull();
-        assertThat(response.getBody().getusername()).isEqualTo("admin");
-    }
+    // Vérifiez que la réponse n'est pas null
+    assertThat(response).isNotNull(); // Vérifier que la réponse elle-même n'est pas nulle
+    assertThat(response.getStatusCode()).isEqualTo(HttpStatus.CREATED); // Vérifier le statut de la réponse
+    assertThat(response.getBody()).isNotNull(); // Vérifier que le corps de la réponse n'est pas nul
+    assertThat(response.getBody().getUsername()).isEqualTo("admin"); // Vérifier que le nom d'utilisateur est correct
+}
+
 }
