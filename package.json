@@ -1,3 +1,4 @@
+{
   "name": "pfe1",
   "version": "0.0.0",
   "private": true,
@@ -8,9 +9,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "sonar": "sonar-scanner",
-    "deploy": "npm run build && curl -u admin:nexus --upload-file frontend-dist.zip http://192.168.166.142:8081/repository/maven-releases/com/example/frontend-dist/1.0.0/front>
-
-
+    "deploy": "npm run build && curl -u admin:nexus --upload-file frontend-dist.zip http://192.168.166.142:8081/repository/maven-releases/com/example/frontend-dist/1.0.0/frontend-dist.zip"
   },
   "dependencies": {
     "@angular/animations": "^18.1.0",
@@ -37,7 +36,6 @@
     "@angular/compiler-cli": "^18.1.0",
     "@types/jasmine": "~5.1.0",
     "jasmine-core": "~5.1.0",
-    "karma": "~6.4.0",
+    "karma": "~6.4.0"
+  }
 }
-}
-
