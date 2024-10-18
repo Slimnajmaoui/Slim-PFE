@@ -9,7 +9,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "sonar": "sonar-scanner",
-    "deploy": "npm run build && curl -u admin:nexus --upload-file frontend-dist.zip http://192.168.166.142:8081/repository/maven-releases/com/example/frontend-dist/1.0.0/frontend-dist.zip"
+    "deploy": "npm run build && curl -u admin:nexus http://192.168.166.142:8081/repository/maven-releases/"
   },
   "dependencies": {
     "@angular/animations": "^18.1.0",
